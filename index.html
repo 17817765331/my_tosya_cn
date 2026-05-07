@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>tosya</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <style>
         .img_d {
             margin: 0;
@@ -20,8 +19,18 @@
 </head>
 <body>
 <div class="img_d">
-    <img class="img_i" alt="tosya" src="/tosya.jpg"/>
+    <img class="img_i" alt="tosya" src="./tosya.jpg"/>
 </div>
+<script>
+    if ((Date.now()%2)==0)
+    {
+        document.getElementsByClassName("img_i")[0].src="./tosya.jpg";
+    }
+    else
+    {
+        document.getElementsByClassName("img_i")[0].src="./asya.jpeg";
+    }
 
+</script>
 </body>
 </html>
