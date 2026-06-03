@@ -22,13 +22,25 @@
     <img class="img_i" alt="tosya" src="./tosya.jpg"/>
 </div>
 <script>
-    if ((Date.now()%2)==0)
-    {
-        document.getElementsByClassName("img_i")[0].src="./tosya.jpg";
+
+    if (localStorage.getItem("img_id")==null){
+        localStorage.setItem("img_id","1");
+        document.getElementsByClassName("img_i")[0].src="./1.jpg";
     }
-    else
-    {
-        document.getElementsByClassName("img_i")[0].src="./asya.jpeg";
+    else {
+        let id = Number(localStorage.getItem("img_id"));
+        if (id<=10){
+            var imgscr = "./" + localStorage.getItem("img_id") + ".jpg";
+            document.getElementsByClassName("img_i")[0].src=imgscr;
+            id = id+1;
+            localStorage.setItem("img_id",String(id));
+        }
+        else {
+            localStorage.setItem("img_id","1");
+            document.getElementsByClassName("img_i")[0].src="./1.jpg";
+        }
+
+
     }
 
 </script>
