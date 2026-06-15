@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <title>tosya</title>
     <style>
+        @font-face {
+            src: url(./MapleMono-SC-NF-Regular_s.ttf);
+            font-family: "Maple_Mono_SC_NF";
+            font-weight: bold;
+            font-style: italic;
+            font-stretch: normal;
+        }
+        @font-face {
+            src: url(./SourceSerifPro-Regular_s.ttf);
+            font-family: "Source_Pro";
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+        }
+
         .img_d {
             margin: 0;
             padding: 0;
@@ -15,9 +30,41 @@
             max-width: 100%;
             max-height: 100%;
         }
+        .img_title_i{
+            padding: 0;
+            max-width: 30%;
+            max-height: 70px;
+        }
+        .img_title_d{
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        h3.t{
+            text-align: center;
+            font-size: 210%;
+        }
     </style>
 </head>
 <body>
+<div class="img_title_d"><img class="img_title_i" alt="zata" src="./zatotitle.png"/></div>
+<h3 class="t"><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">#include &lt;</span><span style="color:#FF2E44;font-family: Source_Pro,serif" class="tosya"></span><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">&gt;</span></h3>
+<script>
+    (function () {
+        setTimeout(() => {
+        }, 800);
+        const container = document.getElementsByClassName("tosya")[0]
+        const data = 'Tosya.h'.split('')
+        let index = 0
+        function writing() {
+            if (index < data.length) {
+                container.innerHTML += data[index ++]
+                let timer = setTimeout(writing, 200)
+            }
+        }
+        writing()
+    })();
+</script>
 <div class="img_d">
     <img class="img_i" alt="tosya" src="./tosya.jpg"/>
 </div>
@@ -25,19 +72,19 @@
 
     if (localStorage.getItem("img_id")==null){
         localStorage.setItem("img_id","1");
-        document.getElementsByClassName("img_i")[0].src="./1.jpg";
+        document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
     }
     else {
         let id = Number(localStorage.getItem("img_id"));
         if (id<=10){
-            var imgscr = "./" + localStorage.getItem("img_id") + ".jpg";
+            var imgscr = "./img/" + localStorage.getItem("img_id") + ".jpg";
             document.getElementsByClassName("img_i")[0].src=imgscr;
             id = id+1;
             localStorage.setItem("img_id",String(id));
         }
         else {
             localStorage.setItem("img_id","1");
-            document.getElementsByClassName("img_i")[0].src="./1.jpg";
+            document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
         }
 
 
