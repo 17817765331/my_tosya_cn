@@ -40,15 +40,31 @@
             display: flex;
             justify-content: center;
         }
+        .texbox{
+            display: flex;
+            justify-content: center;
+        }
+        .tex{
+            font-size: larger;
+            text-align: center;
+        }
         h3.t{
             text-align: center;
             font-size: 210%;
+        }
+        .tosya{
+            color:#FF2E44;
+            font-family: Source_Pro,serif;
+        }
+        .tosya:hover{
+            color:#AE00F7;
+            font-family: Source_Pro,serif;
         }
     </style>
 </head>
 <body>
 <div class="img_title_d"><img class="img_title_i" alt="zata" src="./zatotitle.png"/></div>
-<h3 class="t"><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">#include &lt;</span><span style="color:#FF2E44;font-family: Source_Pro,serif" class="tosya"></span><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">&gt;</span></h3>
+<h3 class="t"><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">#include &lt;</span><span class="tosya" onclick="getimg()"></span><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">&gt;</span></h3>
 <script>
     (function () {
         setTimeout(() => {
@@ -65,30 +81,49 @@
         writing()
     })();
 </script>
+<div class="texbox0">
+    <div  class="texbox">
+        <p class="tex" style="font-size: 150%;">.-.- - . -... .-.- .-.. ..-- -... .-.. ..--<br>.-.- - . -... .-.- .-.. ..-- -... .-.. ..--<br>.-.- - . -... .-.- .-.. ..-- -... .-.. ..--</p>
+    </div>
+    <div  class="texbox">
+        <p class="tex">[ Я ТЕБЯ ЛЮБЛЮ. Я ТЕБЯ ЛЮБЛЮ. Я ТЕБЯ ЛЮБЛЮ. ]<br>[ 我爱你。 我爱你。 我爱你。]</p>
+    </div>
+</div>
 <div class="img_d">
-    <img class="img_i" alt="tosya" src="./tosya.jpg"/>
+    <img class="img_i"/>
 </div>
 <script>
-
-    if (localStorage.getItem("img_id")==null){
-        localStorage.setItem("img_id","1");
-        document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
-    }
-    else {
-        let id = Number(localStorage.getItem("img_id"));
-        if (id<=10){
-            var imgscr = "./img/" + localStorage.getItem("img_id") + ".jpg";
-            document.getElementsByClassName("img_i")[0].src=imgscr;
-            id = id+1;
-            localStorage.setItem("img_id",String(id));
+    function getimg() {
+        if (sessionStorage.getItem("tex")==null){sessionStorage.setItem("tex","0")}
+        if(sessionStorage.getItem("tex")!=null){
+            if(sessionStorage.getItem("tex")=="0"){
+                document.getElementsByClassName("texbox0")[0].remove()
+                sessionStorage.setItem("tex","1")
+            }
         }
-        else {
+        if (localStorage.getItem("img_id")==null){
             localStorage.setItem("img_id","1");
             document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
         }
+        else {
+            let id = Number(localStorage.getItem("img_id"));
+            if (id<=10){
+                var imgscr = "./img/" + localStorage.getItem("img_id") + ".jpg";
+                document.getElementsByClassName("img_i")[0].src=imgscr;
+                id = id+1;
+                localStorage.setItem("img_id",String(id));
+            }
+            else {
+                localStorage.setItem("img_id","1");
+                document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
+            }
 
+
+        }
 
     }
+
+
 
 </script>
 </body>
