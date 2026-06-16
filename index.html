@@ -94,13 +94,7 @@
 </div>
 <script>
     function getimg() {
-        if (sessionStorage.getItem("tex")==null){sessionStorage.setItem("tex","0")}
-        if(sessionStorage.getItem("tex")!=null){
-            if(sessionStorage.getItem("tex")=="0"){
-                document.getElementsByClassName("texbox0")[0].remove()
-                sessionStorage.setItem("tex","1")
-            }
-        }
+
         if (localStorage.getItem("img_id")==null){
             localStorage.setItem("img_id","1");
             document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
