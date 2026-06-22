@@ -51,6 +51,8 @@
         h3.t{
             text-align: center;
             font-size: 210%;
+            color:#308800;
+            font-family: Maple_Mono_SC_NF,serif
         }
         .tosya{
             color:#FF2E44;
@@ -64,21 +66,32 @@
 </head>
 <body>
 <div class="img_title_d"><img class="img_title_i" alt="zata" src="./zatotitle.png"/></div>
-<h3 class="t"><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">#include &lt;</span><span class="tosya" onclick="getimg()"></span><span style="color:#308800;font-family: Maple_Mono_SC_NF,serif">&gt;</span></h3>
+<h3 class="t">#include &lt;<span class="tosya" onclick="getimg()"></span>&gt;</h3>
 <script>
     (function () {
-        setTimeout(() => {
-        }, 800);
         const container = document.getElementsByClassName("tosya")[0]
         const data = 'Tosya.h'.split('')
         let index = 0
-        function writing() {
-            if (index < data.length) {
-                container.innerHTML += data[index ++]
-                let timer = setTimeout(writing, 200)
-            }
+        function write_1() {
+            container.innerHTML += data[index ++]
         }
-        writing()
+        const timer = setTimeout(() => {
+            for (let i = 0; i < data.length; i++) {
+                const timer = setTimeout(() => {
+                    write_1()
+                }, i*200);
+                if (i == 5){
+                    const timer = setTimeout(() => {
+                        const music = new Audio('tosya.ogg');
+                        music.play();
+                        music.loop = true;
+                    }, i*300);
+
+                }
+
+            }
+        }, 500);
+
     })();
 </script>
 <div class="texbox0">
@@ -94,7 +107,13 @@
 </div>
 <script>
     function getimg() {
-
+        if (sessionStorage.getItem("tex")==null){sessionStorage.setItem("tex","0")}
+        if(sessionStorage.getItem("tex")!=null){
+            if(sessionStorage.getItem("tex")=="0"){
+                document.getElementsByClassName("texbox0")[0].remove()
+                sessionStorage.setItem("tex","1")
+            }
+        }
         if (localStorage.getItem("img_id")==null){
             localStorage.setItem("img_id","1");
             document.getElementsByClassName("img_i")[0].src="./img/1.jpg";
